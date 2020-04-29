@@ -33,10 +33,13 @@ GROUP BY maker;
 
 
 --7
-SELECT AVG(l.price) AS price, p.maker
-FROM laptop AS l JOIN product AS p ON l.model = p.model
-WHERE maker = "B"
-GROUP BY maker;
+SELECT AVG(price) AS price
+FROM (SELECT pc.price AS price FROM product AS p 
+LEFT JOIN pc ON pc.model = p.model
+WHERE p.maker = "B"
+UNION SELECT l.price AS PRICE FROM product AS p 
+LEFT JOIN  laptop AS l ON l.model = p.model
+WHERE p.maker = "B");
 
 
 --8

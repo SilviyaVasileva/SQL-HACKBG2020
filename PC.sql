@@ -37,7 +37,8 @@ SELECT AVG(price) AS price
 FROM (SELECT pc.price AS price FROM product AS p 
 LEFT JOIN pc ON pc.model = p.model
 WHERE p.maker = "B"
-UNION SELECT l.price AS PRICE FROM product AS p 
+UNION ALL
+SELECT l.price AS PRICE FROM product AS p 
 LEFT JOIN  laptop AS l ON l.model = p.model
 WHERE p.maker = "B");
 

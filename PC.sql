@@ -61,7 +61,8 @@ FROM (SELECT AVG(pc.price) AS avg_price, p.maker AS p_maker
 SELECT AVG(pc.ram) AS ram
 FROM product AS p 
 LEFT JOIN pc ON pc.model = p.model
-LEFT JOIN printer AS pr ON pr.model = pc.model;
+LEFT JOIN printer AS pr ON pr.model = pc.model
+WHERE pc.model = pr.model;
 
 
 
